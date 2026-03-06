@@ -56,7 +56,7 @@ The system consists of four core services:
 
 1. **Clone the repository**
    ```bash
-   git clone https://github.com/silas-workspace/urbanIQ.git
+   git clone https://github.com/SilasPignotti/urbanIQ.git
    cd urbanIQ
    ```
 
