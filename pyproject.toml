@@ -84,9 +84,9 @@ production = [
 ]
 
 [project.urls]
-Documentation = "https://github.com/silas-workspace/urbanIQ"
-Repository = "https://github.com/silas-workspace/urbanIQ"
-Issues = "https://github.com/silas-workspace/urbanIQ/issues"
+Documentation = "https://github.com/SilasPignotti/urbanIQ"
+Repository = "https://github.com/SilasPignotti/urbanIQ"
+Issues = "https://github.com/SilasPignotti/urbanIQ/issues"
 
 [build-system]
 requires = ["setuptools>=68.0", "wheel"]
