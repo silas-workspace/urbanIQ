@@ -132,4 +132,9 @@ PRP/
 PRESENTATION.md
 doc/IMPLEMENTATION_ROADMAP.md
 
+# Pi agent
+.pi/plans/
+.pi/reviews/
+.pi/LESSONS.md
+
 # Documentation (doc/ and CHANGELOG.md are included in git)
