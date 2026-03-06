@@ -3,7 +3,7 @@ name = "urbaniq"
 version = "0.1.0"
 description = "Intelligent geodata aggregation system for automated district analysis in Berlin"
 authors = [
-    { name = "urbanIQ Development Team", email = "dev@urbaniq.berlin" }
+    { name = "Silas Pignotti" }
 ]
 license = "MIT"
 requires-python = ">=3.11"
@@ -84,9 +84,9 @@ production = [
 ]
 
 [project.urls]
-Documentation = "https://github.com/urbaniq-berlin/urbaniq"
-Repository = "https://github.com/urbaniq-berlin/urbaniq"
-Issues = "https://github.com/urbaniq-berlin/urbaniq/issues"
+Documentation = "https://github.com/silas-workspace/urbanIQ"
+Repository = "https://github.com/silas-workspace/urbanIQ"
+Issues = "https://github.com/silas-workspace/urbanIQ/issues"
 
 [build-system]
 requires = ["setuptools>=68.0", "wheel"]
