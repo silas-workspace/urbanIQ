@@ -6,7 +6,7 @@ tracking progress and maintaining relationships to result packages.
 """
 
 import json
-from datetime import datetime
+from datetime import UTC, datetime
 from enum import Enum
 from uuid import uuid4
 
@@ -68,7 +68,7 @@ class Job(SQLModel, table=True):
         description="Error details when failed",
     )
     created_at: datetime = Field(
-        default_factory=datetime.utcnow,
+        default_factory=lambda: datetime.now(UTC),
         description="Job creation timestamp",
     )
     completed_at: datetime | None = Field(
@@ -118,10 +118,10 @@ class Job(SQLModel, table=True):
         self.status = JobStatus.COMPLETED
         self.progress = 100
         self.result_package_id = package_id
-        self.completed_at = datetime.utcnow()
+        self.completed_at = datetime.now(UTC)
 
     def mark_failed(self, error_message: str) -> None:
         """Mark job as failed with error message."""
         self.status = JobStatus.FAILED
         self.error_message = error_message
-        self.completed_at = datetime.utcnow()
+        self.completed_at = datetime.now(UTC)
