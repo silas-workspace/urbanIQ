@@ -310,6 +310,17 @@ This project was built during a university GIS and urban data engineering course
 - Natural language request parsing with OpenAI models
 - HTMX-based frontend delivery without a heavy JavaScript stack
 
+## 📘 Further Documentation
+
+If you want to go deeper than the project overview, these are the best files to open first:
+
+- `doc/README.md` — quick index of what is still useful vs archived
+- `doc/DATABASE_SCHEMA.md` — job, package, and data source storage model
+- `doc/CONNECTOR_SPECIFICATIONS.md` — Berlin Geoportal and Overpass connector notes
+- `doc/FRONTEND_IMPLEMENTATION.md` — HTMX/Jinja frontend structure and rendering approach
+
+The rest of `doc/` is preserved mainly as development history and may reflect earlier Gemini-era assumptions.
+
 ## 📄 License
 
 This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
