@@ -56,8 +56,8 @@ The system consists of four core services:
 
 1. **Clone the repository**
    ```bash
-   git clone https://github.com/urbaniq-berlin/urbaniq.git
-   cd urbaniq
+   git clone https://github.com/silas-workspace/urbanIQ.git
+   cd urbanIQ
    ```
 
 2. **Set up the environment**
@@ -146,17 +146,13 @@ uv run pytest -m "external"  # External API tests (requires real API key)
 ### Code Quality
 
 ```bash
-# Format code
-uv run ruff format .
+# Run lint, typecheck, and test sessions
+uv run nox
 
-# Lint code
-uv run ruff check .
-
-# Fix linting issues automatically
-uv run ruff check --fix .
-
-# Type checking
-uv run mypy app/
+# Run individual sessions
+uv run nox -s lint
+uv run nox -s typecheck
+uv run nox -s test
 ```
 
 ### Project Structure
@@ -186,7 +182,6 @@ urbaniq/
 │   │   ├── base.py        # Abstract base connector
 │   │   ├── geoportal.py   # Berlin WFS/WMS client
 │   │   └── osm.py         # OpenStreetMap Overpass API
-│   ├── utils/             # Utility functions
 │   └── frontend/          # Web interface assets
 │       ├── templates/     # Jinja2 HTML templates
 │       └── static/        # CSS, JavaScript, images
@@ -305,45 +300,26 @@ RUN uv sync --frozen
 CMD ["uv", "run", "uvicorn", "app.main:app", "--host", "0.0.0.0", "--port", "8000"]
 ```
 
-## 🤝 Contributing
+## 📚 Background
 
-### Development Workflow
+This project was built during a university GIS and urban data engineering course. It serves as a compact end-to-end example of:
 
-1. Fork the repository
-2. Create a feature branch (`git checkout -b feature/amazing-feature`)
-3. Make your changes following the coding standards
-4. Add tests for new functionality
-5. Run the test suite (`uv run pytest`)
-6. Commit your changes (`git commit -m 'Add amazing feature'`)
-7. Push to the branch (`git push origin feature/amazing-feature`)
-8. Open a Pull Request
+- FastAPI backend development with SQLModel and Alembic
+- Geospatial processing with GeoPandas, Shapely, Fiona, and GDAL
+- Connector-based acquisition from Berlin Geoportal and OpenStreetMap
+- Natural language request parsing with OpenAI models
+- HTMX-based frontend delivery without a heavy JavaScript stack
 
-### Coding Standards
+## 📘 Further Documentation
 
-- Follow PEP 8 with 100-character line length
-- Use type hints for all functions and methods
-- Write comprehensive docstrings using Google style
-- Maintain test coverage above 80%
-- Use meaningful variable and function names
+If you want to go deeper than the project overview, these are the best files to open first:
 
-## 📚 Academic Context
+- `doc/README.md` — quick index of what is still useful vs archived
+- `doc/DATABASE_SCHEMA.md` — job, package, and data source storage model
+- `doc/CONNECTOR_SPECIFICATIONS.md` — Berlin Geoportal and Overpass connector notes
+- `doc/FRONTEND_IMPLEMENTATION.md` — HTMX/Jinja frontend structure and rendering approach
 
-This project was developed as part of a university course in Geographic Information Systems and Urban Data Analysis. It demonstrates:
-
-- **Software Engineering**: Modern Python development practices with FastAPI, SQLModel, and async programming
-- **Geospatial Analysis**: Integration of multiple geodata sources with harmonization and quality assessment
-- **Machine Learning**: Application of Large Language Models for natural language processing and metadata generation
-- **System Design**: Microservices architecture with proper separation of concerns
-- **Data Management**: Professional data packaging with comprehensive documentation
-
-### Learning Objectives Addressed
-
-- Understanding of modern web API development
-- Practical experience with geospatial data processing
-- Integration of AI/ML services in production systems
-- Database design and ORM usage
-- Testing strategies for complex systems
-- Documentation and code quality practices
+The rest of `doc/` is preserved mainly as development history and may reflect earlier Gemini-era assumptions.
 
 ## 📄 License
 
@@ -356,12 +332,6 @@ This project is licensed under the MIT License - see the [LICENSE](LICENSE) file
 - **OpenAI** for GPT API access enabling intelligent text processing
 - **FastAPI Community** for excellent framework and documentation
 - **GeoPandas Team** for powerful geospatial data processing tools
-
-## 📞 Support
-
-- **Documentation**: Check the [API documentation](http://localhost:8000/docs) when running locally
-- **Issues**: Report bugs and request features via GitHub Issues
-- **Development**: See `CLAUDE.md` for detailed development guidelines
 
 ---
 

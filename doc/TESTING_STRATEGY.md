@@ -1,3 +1,7 @@
+> ⚠️ **Archived** — This document was written during initial development and
+> references the Gemini API. The system now uses OpenAI. See root `README.md`
+> for current setup instructions.
+
 # Testing Strategy
 
 This document defines the comprehensive testing strategy for urbanIQ Berlin geodata aggregation system.

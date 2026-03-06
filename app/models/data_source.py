@@ -6,7 +6,7 @@ for Berlin Geoportal WFS and OpenStreetMap endpoints.
 """
 
 import json
-from datetime import datetime
+from datetime import UTC, datetime
 from enum import Enum
 from typing import Any
 from uuid import uuid4
@@ -113,7 +113,7 @@ class DataSource(SQLModel, table=True):
     def update_health_status(self, status: HealthStatus) -> None:
         """Update health check status and timestamp."""
         self.test_status = status
-        self.last_tested = datetime.utcnow()
+        self.last_tested = datetime.now(UTC)
 
     def is_healthy(self) -> bool:
         """Check if data source is healthy and active."""

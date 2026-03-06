@@ -139,7 +139,7 @@ class TestJobModel:
     def test_mark_completed_method(self, mock_datetime):
         """Test mark_completed method."""
         mock_now = datetime(2025, 1, 1, 12, 0, 0)
-        mock_datetime.utcnow.return_value = mock_now
+        mock_datetime.now.return_value = mock_now
 
         job = Job(request_text="Test request")
         package_id = "test-package-id"
@@ -155,7 +155,7 @@ class TestJobModel:
     def test_mark_failed_method(self, mock_datetime):
         """Test mark_failed method."""
         mock_now = datetime(2025, 1, 1, 12, 0, 0)
-        mock_datetime.utcnow.return_value = mock_now
+        mock_datetime.now.return_value = mock_now
 
         job = Job(request_text="Test request")
         error_msg = "Processing failed"

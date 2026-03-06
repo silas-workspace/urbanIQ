@@ -1,8 +1,8 @@
-name: CI Pipeline
+name: CI
 
 on:
   push:
-    branches: [main, develop]
+    branches: [main]
   pull_request:
     branches: [main]
 
@@ -10,27 +10,18 @@ concurrency:
   group: ${{ github.workflow }}-${{ github.ref }}
   cancel-in-progress: true
 
-env:
-  UV_VERSION: "0.4.18"
-
 jobs:
-  quality-check:
+  ci:
     runs-on: ubuntu-latest
-    strategy:
-      fail-fast: false
-      matrix:
-        python-version: ["3.11", "3.12"]
 
     steps:
       - uses: actions/checkout@v4
 
       - name: Install uv
         uses: astral-sh/setup-uv@v2
-        with:
-          version: ${{ env.UV_VERSION }}
 
-      - name: Set up Python ${{ matrix.python-version }}
-        run: uv python install ${{ matrix.python-version }}
+      - name: Set up Python
+        run: uv python install 3.11
 
       - name: Install GDAL dependencies
         run: |
@@ -38,46 +29,13 @@ jobs:
           sudo apt-get install -y software-properties-common
           sudo add-apt-repository ppa:ubuntugis/ubuntugis-unstable -y
           sudo apt-get update
-          sudo apt-get install -y \
-            gdal-bin \
-            libgdal-dev \
-            libgeos-dev \
-            libproj-dev \
-            gcc \
-            g++ \
-            pkg-config \
-            libspatialindex-dev \
-            python3-dev
-
-      - name: Configure GDAL environment
-        run: |
-          GDAL_VERSION=$(gdal-config --version)
-          echo "GDAL_VERSION=$GDAL_VERSION" >> $GITHUB_ENV
+          sudo apt-get install -y gdal-bin libgdal-dev libgeos-dev libproj-dev \
+            gcc g++ pkg-config libspatialindex-dev python3-dev
           echo "CPLUS_INCLUDE_PATH=/usr/include/gdal" >> $GITHUB_ENV
           echo "C_INCLUDE_PATH=/usr/include/gdal" >> $GITHUB_ENV
-
-      - name: Cache UV dependencies
-        uses: actions/cache@v4
-        with:
-          path: ~/.cache/uv
-          key: uv-${{ runner.os }}-${{ matrix.python-version }}-${{ hashFiles('**/uv.lock') }}
-          restore-keys: |
-            uv-${{ runner.os }}-${{ matrix.python-version }}-
-            uv-${{ runner.os }}-
 
       - name: Install dependencies
         run: uv sync --frozen
 
-      - name: Code formatting check
-        run: uv run ruff format --check .
-
-      - name: Linting
-        run: uv run ruff check . --output-format=github
-
-      - name: Type checking
-        run: uv run mypy app/ --install-types --non-interactive
-
-      - name: Basic functionality tests
-        run: uv run pytest tests/test_models/ tests/test_database.py tests/test_health.py -v
-        env:
-          OPENAI_API_KEY: 'mock-key-for-testing'
+      - name: Run nox
+        run: uv run nox

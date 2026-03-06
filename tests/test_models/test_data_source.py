@@ -188,7 +188,7 @@ class TestDataSourceModel:
     def test_update_health_status_method(self, mock_datetime):
         """Test update_health_status method."""
         mock_now = datetime(2025, 1, 1, 12, 0, 0)
-        mock_datetime.utcnow.return_value = mock_now
+        mock_datetime.now.return_value = mock_now
 
         metadata_json = json.dumps({"test": "data"})
         data_source = DataSource(

@@ -1,3 +1,7 @@
+> ⚠️ **Archived** — This document was written during initial development and
+> references the Gemini API. The system now uses OpenAI. See root `README.md`
+> for current setup instructions.
+
 # Build Instructions
 
 This document provides step-by-step instructions for building and running the urbanIQ Berlin geodata aggregation system.

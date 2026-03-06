@@ -1,3 +1,7 @@
+> ⚠️ **Archived** — This document was written during initial development and
+> references the Gemini API or earlier MVP assumptions. The system now uses OpenAI.
+> Use the root `README.md` for setup and `doc/README.md` for document status.
+
 # API Design Specification
 
 This document defines the REST API design for urbanIQ Berlin geodata aggregation system.

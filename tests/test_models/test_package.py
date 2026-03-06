@@ -137,7 +137,7 @@ class TestPackageModel:
         """Test is_expired method."""
         # Set up mock current time
         current_time = datetime(2025, 1, 1, 12, 0, 0)
-        mock_datetime.utcnow.return_value = current_time
+        mock_datetime.now.return_value = current_time
 
         package = Package(
             job_id="test-job-id",
@@ -172,7 +172,7 @@ class TestPackageModel:
     def test_extend_expiration_method(self, mock_datetime):
         """Test extend_expiration method."""
         current_time = datetime(2025, 1, 1, 12, 0, 0)
-        mock_datetime.utcnow.return_value = current_time
+        mock_datetime.now.return_value = current_time
 
         package = Package(
             job_id="test-job-id",
