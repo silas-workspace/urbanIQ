@@ -23,7 +23,7 @@ Fixes #(issue number)
 
 - [ ] Tests pass locally with `uv run pytest`
 - [ ] Code follows style guidelines (`uv run ruff check .`)
-- [ ] Type checking passes (`uv run mypy app/`)
+- [ ] Quality checks pass (`uv run nox`)
 - [ ] Added tests that prove the fix is effective or that the feature works
 - [ ] New and existing unit tests pass locally
 
