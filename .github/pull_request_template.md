@@ -30,7 +30,6 @@ Fixes #(issue number)
 ## Documentation
 
 - [ ] Updated relevant documentation
-- [ ] Updated CHANGELOG.md
 - [ ] Added docstrings to new functions/classes
 
 ## Screenshots (if applicable)
