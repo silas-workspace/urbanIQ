@@ -34,7 +34,7 @@ dependencies = [
     "pyproj>=3.6.0",
     "gdal>=3.4.0,<3.10.0",
     # LLM Integration
-    "langchain>=0.1.0",
+    "langchain>=0.3.30",
     # Data Handling
     "pydantic>=2.5.0",
     "pydantic-settings>=2.1.0",
